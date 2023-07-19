@@ -31,12 +31,13 @@ class SpeedCalculator(QWidget):
         self.setLayout(grid)
 
     def calculate_speed(self):
+        speed = round(float(self.distance_line_edit.text()) / float(self.time_line_edit.text()),2)
         if self.unit_combo.currentText() == "Metric (Km)":
             unit = "km/h"
         else:
+            speed = round(speed * 0.621371, 2)
             unit = "mph"
 
-        speed = float(self.distance_line_edit.text()) / float(self.time_line_edit.text())
         self.output_label.setText(f"Average speed: {speed} {unit}")
 
 
